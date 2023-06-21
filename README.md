@@ -1,6 +1,11 @@
-# OpenAPIClient-php
+# Nuitee/LiteAPI
 
-lite api hotel booking api
+The **Lite API** can be used to to do the following
+
+Get room rates & availability for a set of hotels
+Select a specific hotel with room availability and make a booking
+Manage the bookings - retrieve and cancel existing bookings
+Get static content for hotels, search hotels by destination
 
 
 ## Installation & Usage
@@ -36,7 +41,7 @@ Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
+require_once('/path/to/Nuitee/LiteAPI/vendor/autoload.php');
 ```
 
 ## Getting Started
@@ -49,76 +54,60 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-// Configure API key authorization: ApiKeyAuth
+// Configure API key authorization: apikeyAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\BookingManagementApi(
+$apiInstance = new OpenAPI\Client\Api\BookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$booking_id = SEMkJ9lNM; // string | (Required) The unique identifier of the booking you would like to update.
+$rates_book_post_request = {"prebookId":"UwfMkUWH6","guestInfo":{"guestFirstName":"Kim","guestLastName":"James","guestEmail":"test@nlite.ml"},"payment":{"holderName":"Kim James","number":"4242424242424242","expireDate":"11/29","cvc":"456","method":"CREDIT_CARD"}}; // \OpenAPI\Client\Model\RatesBookPostRequest
 
 try {
-    $result = $apiInstance->bookingsBookingIdDelete($booking_id);
+    $result = $apiInstance->ratesBookPost($rates_book_post_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BookingManagementApi->bookingsBookingIdDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BookApi->ratesBookPost: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
 
 ## API Endpoints
 
-All URIs are relative to *https://api.nlite.ml/v1*
+All URIs are relative to *https://api.liteapi.travel/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BookingManagementApi* | [**bookingsBookingIdDelete**](docs/Api/BookingManagementApi.md#bookingsbookingiddelete) | **DELETE** /bookings/{bookingId} | Cancel booking
-*BookingManagementApi* | [**bookingsBookingIdGet**](docs/Api/BookingManagementApi.md#bookingsbookingidget) | **GET** /bookings/{bookingId} | Retrieve booking
-*BookingsApi* | [**bookPost**](docs/Api/BookingsApi.md#bookpost) | **POST** /book | Book
-*BookingsApi* | [**prebookPost**](docs/Api/BookingsApi.md#prebookpost) | **POST** /prebook | Prebook
-*HotelsApi* | [**getData**](docs/Api/HotelsApi.md#getdata) | **GET** /data | Search by Destination/Hotel
-*HotelsApi* | [**hotelsHotelIdGet**](docs/Api/HotelsApi.md#hotelshotelidget) | **GET** /hotels/{hotelId} | Get Room Availability &amp; Rates for a Hotel ID
-*HotelsApi* | [**hotelsPost**](docs/Api/HotelsApi.md#hotelspost) | **POST** /hotels | Get Minimum Price for Available Hotels
+*BookApi* | [**ratesBookPost**](docs/Api/BookApi.md#ratesbookpost) | **POST** /rates/book | hotel rate book
+*BookApi* | [**ratesPrebookPost**](docs/Api/BookApi.md#ratesprebookpost) | **POST** /rates/prebook | hotel rate prebook
+*BookingManagementApi* | [**bookingsBookingIdGet**](docs/Api/BookingManagementApi.md#bookingsbookingidget) | **GET** /bookings/{bookingId} | Booking retrieve
+*BookingManagementApi* | [**bookingsBookingIdPut**](docs/Api/BookingManagementApi.md#bookingsbookingidput) | **PUT** /bookings/{bookingId} | Booking cancel
+*BookingManagementApi* | [**bookingsGet**](docs/Api/BookingManagementApi.md#bookingsget) | **GET** /bookings | Booking list
+*GuestAndLoyaltyApi* | [**guestsGet**](docs/Api/GuestAndLoyaltyApi.md#guestsget) | **GET** /guests | guests
+*SearchApi* | [**hotelsGet**](docs/Api/SearchApi.md#hotelsget) | **GET** /hotels | hotel minimum rates availability
+*SearchApi* | [**hotelsRatesGet**](docs/Api/SearchApi.md#hotelsratesget) | **GET** /hotels/rates | hotel full rates availability
+*StaticDataApi* | [**dataCitiesGet**](docs/Api/StaticDataApi.md#datacitiesget) | **GET** /data/cities | City list
+*StaticDataApi* | [**dataCountriesGet**](docs/Api/StaticDataApi.md#datacountriesget) | **GET** /data/countries | Country list
+*StaticDataApi* | [**dataCurrenciesGet**](docs/Api/StaticDataApi.md#datacurrenciesget) | **GET** /data/currencies | Currency list
+*StaticDataApi* | [**dataHotelGet**](docs/Api/StaticDataApi.md#datahotelget) | **GET** /data/hotel | Hotel details
+*StaticDataApi* | [**dataHotelsGet**](docs/Api/StaticDataApi.md#datahotelsget) | **GET** /data/hotels | Hotel list
+*StaticDataApi* | [**dataIataCodesGet**](docs/Api/StaticDataApi.md#dataiatacodesget) | **GET** /data/iataCodes | IATA code list
 
 ## Models
 
-- [BookPost400Response](docs/Model/BookPost400Response.md)
-- [BookPostRequest](docs/Model/BookPostRequest.md)
-- [BookPostRequestContact](docs/Model/BookPostRequestContact.md)
-- [BookingsBookingIdDelete200Response](docs/Model/BookingsBookingIdDelete200Response.md)
-- [BookingsBookingIdDelete400Response](docs/Model/BookingsBookingIdDelete400Response.md)
-- [BookingsBookingIdDelete400ResponseError](docs/Model/BookingsBookingIdDelete400ResponseError.md)
-- [BookingsBookingIdDelete500Response](docs/Model/BookingsBookingIdDelete500Response.md)
-- [GetData200Response](docs/Model/GetData200Response.md)
-- [GetData200ResponseDataInner](docs/Model/GetData200ResponseDataInner.md)
-- [GetData400Response](docs/Model/GetData400Response.md)
-- [GetData400ResponseError](docs/Model/GetData400ResponseError.md)
-- [GetData401Response](docs/Model/GetData401Response.md)
-- [HotelsHotelIdGet200Response](docs/Model/HotelsHotelIdGet200Response.md)
-- [HotelsHotelIdGet200ResponseData](docs/Model/HotelsHotelIdGet200ResponseData.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInner](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInner.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInner](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInner.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerCancellationPolicies](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerCancellationPolicies.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerCancellationPoliciesCancelPolicyInfosInner](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerCancellationPoliciesCancelPolicyInfosInner.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRate](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRate.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRateTaxesAndFeesInner](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRateTaxesAndFeesInner.md)
-- [HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRateTotalInner](docs/Model/HotelsHotelIdGet200ResponseDataRoomTypesInnerRatesInnerRetailRateTotalInner.md)
-- [HotelsPost200Response](docs/Model/HotelsPost200Response.md)
-- [HotelsPost200ResponseDataInner](docs/Model/HotelsPost200ResponseDataInner.md)
-- [HotelsPost401Response](docs/Model/HotelsPost401Response.md)
-- [HotelsPostRequest](docs/Model/HotelsPostRequest.md)
-- [PrebookPostRequest](docs/Model/PrebookPostRequest.md)
+- [RatesBookPostRequest](docs/Model/RatesBookPostRequest.md)
+- [RatesBookPostRequestGuestInfo](docs/Model/RatesBookPostRequestGuestInfo.md)
+- [RatesBookPostRequestPayment](docs/Model/RatesBookPostRequestPayment.md)
 
 ## Authorization
 
 Authentication schemes defined for the API:
-### ApiKeyAuth
+### apikeyAuth
 
 - **Type**: API key
 - **API key parameter name**: X-API-Key
@@ -142,5 +131,5 @@ vendor/bin/phpunit
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.0.0`
+- API version: `2.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

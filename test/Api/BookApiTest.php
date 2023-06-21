@@ -1,6 +1,6 @@
 <?php
 /**
- * BookingManagementApiTest
+ * BookApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -33,14 +33,14 @@ use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * BookingManagementApiTest Class Doc Comment
+ * BookApiTest Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BookingManagementApiTest extends TestCase
+class BookApiTest extends TestCase
 {
 
     /**
@@ -72,36 +72,24 @@ class BookingManagementApiTest extends TestCase
     }
 
     /**
-     * Test case for bookingsBookingIdGet
+     * Test case for ratesBookPost
      *
-     * Booking retrieve.
+     * hotel rate book.
      *
      */
-    public function testBookingsBookingIdGet()
+    public function testRatesBookPost()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for bookingsBookingIdPut
+     * Test case for ratesPrebookPost
      *
-     * Booking cancel.
-     *
-     */
-    public function testBookingsBookingIdPut()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for bookingsGet
-     *
-     * Booking list.
+     * hotel rate prebook.
      *
      */
-    public function testBookingsGet()
+    public function testRatesPrebookPost()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * BookingManagementApiTest
+ * StaticDataApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -33,14 +33,14 @@ use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * BookingManagementApiTest Class Doc Comment
+ * StaticDataApiTest Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BookingManagementApiTest extends TestCase
+class StaticDataApiTest extends TestCase
 {
 
     /**
@@ -72,36 +72,72 @@ class BookingManagementApiTest extends TestCase
     }
 
     /**
-     * Test case for bookingsBookingIdGet
+     * Test case for dataCitiesGet
      *
-     * Booking retrieve.
+     * City list.
      *
      */
-    public function testBookingsBookingIdGet()
+    public function testDataCitiesGet()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for bookingsBookingIdPut
+     * Test case for dataCountriesGet
      *
-     * Booking cancel.
+     * Country list.
      *
      */
-    public function testBookingsBookingIdPut()
+    public function testDataCountriesGet()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for bookingsGet
+     * Test case for dataCurrenciesGet
      *
-     * Booking list.
+     * Currency list.
      *
      */
-    public function testBookingsGet()
+    public function testDataCurrenciesGet()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for dataHotelGet
+     *
+     * Hotel details.
+     *
+     */
+    public function testDataHotelGet()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for dataHotelsGet
+     *
+     * Hotel list.
+     *
+     */
+    public function testDataHotelsGet()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for dataIataCodesGet
+     *
+     * IATA code list.
+     *
+     */
+    public function testDataIataCodesGet()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * BookingManagementApi
+ * BookApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use OpenAPI\Client\HeaderSelector;
 use OpenAPI\Client\ObjectSerializer;
 
 /**
- * BookingManagementApi Class Doc Comment
+ * BookApi Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BookingManagementApi
+class BookApi
 {
     /**
      * @var ClientInterface
@@ -71,13 +71,10 @@ class BookingManagementApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'bookingsBookingIdGet' => [
+        'ratesBookPost' => [
             'application/json',
         ],
-        'bookingsBookingIdPut' => [
-            'application/json',
-        ],
-        'bookingsGet' => [
+        'ratesPrebookPost' => [
             'application/json',
         ],
     ];
@@ -129,38 +126,38 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsBookingIdGet
+     * Operation ratesBookPost
      *
-     * Booking retrieve
+     * hotel rate book
      *
-     * @param  string $booking_id The Booking Id that needs to be retrieved (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdGet'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\RatesBookPostRequest $rates_book_post_request rates_book_post_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesBookPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object|object|object
      */
-    public function bookingsBookingIdGet($booking_id, string $contentType = self::contentTypes['bookingsBookingIdGet'][0])
+    public function ratesBookPost($rates_book_post_request = null, string $contentType = self::contentTypes['ratesBookPost'][0])
     {
-        list($response) = $this->bookingsBookingIdGetWithHttpInfo($booking_id, $contentType);
+        list($response) = $this->ratesBookPostWithHttpInfo($rates_book_post_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation bookingsBookingIdGetWithHttpInfo
+     * Operation ratesBookPostWithHttpInfo
      *
-     * Booking retrieve
+     * hotel rate book
      *
-     * @param  string $booking_id The Booking Id that needs to be retrieved (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdGet'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\RatesBookPostRequest $rates_book_post_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesBookPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bookingsBookingIdGetWithHttpInfo($booking_id, string $contentType = self::contentTypes['bookingsBookingIdGet'][0])
+    public function ratesBookPostWithHttpInfo($rates_book_post_request = null, string $contentType = self::contentTypes['ratesBookPost'][0])
     {
-        $request = $this->bookingsBookingIdGetRequest($booking_id, $contentType);
+        $request = $this->ratesBookPostRequest($rates_book_post_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -213,7 +210,7 @@ class BookingManagementApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 204:
+                case 400:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -271,7 +268,7 @@ class BookingManagementApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 204:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -293,19 +290,19 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsBookingIdGetAsync
+     * Operation ratesBookPostAsync
      *
-     * Booking retrieve
+     * hotel rate book
      *
-     * @param  string $booking_id The Booking Id that needs to be retrieved (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdGet'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\RatesBookPostRequest $rates_book_post_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesBookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bookingsBookingIdGetAsync($booking_id, string $contentType = self::contentTypes['bookingsBookingIdGet'][0])
+    public function ratesBookPostAsync($rates_book_post_request = null, string $contentType = self::contentTypes['ratesBookPost'][0])
     {
-        return $this->bookingsBookingIdGetAsyncWithHttpInfo($booking_id, $contentType)
+        return $this->ratesBookPostAsyncWithHttpInfo($rates_book_post_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -314,20 +311,20 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsBookingIdGetAsyncWithHttpInfo
+     * Operation ratesBookPostAsyncWithHttpInfo
      *
-     * Booking retrieve
+     * hotel rate book
      *
-     * @param  string $booking_id The Booking Id that needs to be retrieved (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdGet'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\RatesBookPostRequest $rates_book_post_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesBookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bookingsBookingIdGetAsyncWithHttpInfo($booking_id, string $contentType = self::contentTypes['bookingsBookingIdGet'][0])
+    public function ratesBookPostAsyncWithHttpInfo($rates_book_post_request = null, string $contentType = self::contentTypes['ratesBookPost'][0])
     {
         $returnType = 'object';
-        $request = $this->bookingsBookingIdGetRequest($booking_id, $contentType);
+        $request = $this->ratesBookPostRequest($rates_book_post_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -366,26 +363,20 @@ class BookingManagementApi
     }
 
     /**
-     * Create request for operation 'bookingsBookingIdGet'
+     * Create request for operation 'ratesBookPost'
      *
-     * @param  string $booking_id The Booking Id that needs to be retrieved (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdGet'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\RatesBookPostRequest $rates_book_post_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesBookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bookingsBookingIdGetRequest($booking_id, string $contentType = self::contentTypes['bookingsBookingIdGet'][0])
+    public function ratesBookPostRequest($rates_book_post_request = null, string $contentType = self::contentTypes['ratesBookPost'][0])
     {
 
-        // verify the required parameter 'booking_id' is set
-        if ($booking_id === null || (is_array($booking_id) && count($booking_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $booking_id when calling bookingsBookingIdGet'
-            );
-        }
 
 
-        $resourcePath = '/bookings/{bookingId}';
+        $resourcePath = '/rates/book';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,14 +385,6 @@ class BookingManagementApi
 
 
 
-        // path params
-        if ($booking_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'bookingId' . '}',
-                ObjectSerializer::toPathValue($booking_id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -411,7 +394,14 @@ class BookingManagementApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($rates_book_post_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rates_book_post_request));
+            } else {
+                $httpBody = $rates_book_post_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -455,7 +445,7 @@ class BookingManagementApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -463,395 +453,38 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsBookingIdPut
+     * Operation ratesPrebookPost
      *
-     * Booking cancel
+     * hotel rate prebook
      *
-     * @param  string $booking_id (Required) The unique identifier of the booking you would like to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdPut'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return object|object|object|object
-     */
-    public function bookingsBookingIdPut($booking_id, string $contentType = self::contentTypes['bookingsBookingIdPut'][0])
-    {
-        list($response) = $this->bookingsBookingIdPutWithHttpInfo($booking_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation bookingsBookingIdPutWithHttpInfo
-     *
-     * Booking cancel
-     *
-     * @param  string $booking_id (Required) The unique identifier of the booking you would like to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdPut'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of object|object|object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function bookingsBookingIdPutWithHttpInfo($booking_id, string $contentType = self::contentTypes['bookingsBookingIdPut'][0])
-    {
-        $request = $this->bookingsBookingIdPutRequest($booking_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 204:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 304:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'object';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 304:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation bookingsBookingIdPutAsync
-     *
-     * Booking cancel
-     *
-     * @param  string $booking_id (Required) The unique identifier of the booking you would like to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function bookingsBookingIdPutAsync($booking_id, string $contentType = self::contentTypes['bookingsBookingIdPut'][0])
-    {
-        return $this->bookingsBookingIdPutAsyncWithHttpInfo($booking_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation bookingsBookingIdPutAsyncWithHttpInfo
-     *
-     * Booking cancel
-     *
-     * @param  string $booking_id (Required) The unique identifier of the booking you would like to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function bookingsBookingIdPutAsyncWithHttpInfo($booking_id, string $contentType = self::contentTypes['bookingsBookingIdPut'][0])
-    {
-        $returnType = 'object';
-        $request = $this->bookingsBookingIdPutRequest($booking_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'bookingsBookingIdPut'
-     *
-     * @param  string $booking_id (Required) The unique identifier of the booking you would like to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsBookingIdPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function bookingsBookingIdPutRequest($booking_id, string $contentType = self::contentTypes['bookingsBookingIdPut'][0])
-    {
-
-        // verify the required parameter 'booking_id' is set
-        if ($booking_id === null || (is_array($booking_id) && count($booking_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $booking_id when calling bookingsBookingIdPut'
-            );
-        }
-
-
-        $resourcePath = '/bookings/{bookingId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($booking_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'bookingId' . '}',
-                ObjectSerializer::toPathValue($booking_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
-        if ($apiKey !== null) {
-            $headers['X-API-Key'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation bookingsGet
-     *
-     * Booking list
-     *
-     * @param  string $guest_id The Guest Id of the user (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsGet'] to see the possible values for this operation
+     * @param  object $body body (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesPrebookPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object|object|object
      */
-    public function bookingsGet($guest_id, string $contentType = self::contentTypes['bookingsGet'][0])
+    public function ratesPrebookPost($body = null, string $contentType = self::contentTypes['ratesPrebookPost'][0])
     {
-        list($response) = $this->bookingsGetWithHttpInfo($guest_id, $contentType);
+        list($response) = $this->ratesPrebookPostWithHttpInfo($body, $contentType);
         return $response;
     }
 
     /**
-     * Operation bookingsGetWithHttpInfo
+     * Operation ratesPrebookPostWithHttpInfo
      *
-     * Booking list
+     * hotel rate prebook
      *
-     * @param  string $guest_id The Guest Id of the user (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsGet'] to see the possible values for this operation
+     * @param  object $body (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesPrebookPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bookingsGetWithHttpInfo($guest_id, string $contentType = self::contentTypes['bookingsGet'][0])
+    public function ratesPrebookPostWithHttpInfo($body = null, string $contentType = self::contentTypes['ratesPrebookPost'][0])
     {
-        $request = $this->bookingsGetRequest($guest_id, $contentType);
+        $request = $this->ratesPrebookPostRequest($body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -904,7 +537,7 @@ class BookingManagementApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 204:
+                case 400:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -962,7 +595,7 @@ class BookingManagementApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 204:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -984,19 +617,19 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsGetAsync
+     * Operation ratesPrebookPostAsync
      *
-     * Booking list
+     * hotel rate prebook
      *
-     * @param  string $guest_id The Guest Id of the user (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsGet'] to see the possible values for this operation
+     * @param  object $body (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesPrebookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bookingsGetAsync($guest_id, string $contentType = self::contentTypes['bookingsGet'][0])
+    public function ratesPrebookPostAsync($body = null, string $contentType = self::contentTypes['ratesPrebookPost'][0])
     {
-        return $this->bookingsGetAsyncWithHttpInfo($guest_id, $contentType)
+        return $this->ratesPrebookPostAsyncWithHttpInfo($body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1005,20 +638,20 @@ class BookingManagementApi
     }
 
     /**
-     * Operation bookingsGetAsyncWithHttpInfo
+     * Operation ratesPrebookPostAsyncWithHttpInfo
      *
-     * Booking list
+     * hotel rate prebook
      *
-     * @param  string $guest_id The Guest Id of the user (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsGet'] to see the possible values for this operation
+     * @param  object $body (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesPrebookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bookingsGetAsyncWithHttpInfo($guest_id, string $contentType = self::contentTypes['bookingsGet'][0])
+    public function ratesPrebookPostAsyncWithHttpInfo($body = null, string $contentType = self::contentTypes['ratesPrebookPost'][0])
     {
         $returnType = 'object';
-        $request = $this->bookingsGetRequest($guest_id, $contentType);
+        $request = $this->ratesPrebookPostRequest($body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1057,41 +690,26 @@ class BookingManagementApi
     }
 
     /**
-     * Create request for operation 'bookingsGet'
+     * Create request for operation 'ratesPrebookPost'
      *
-     * @param  string $guest_id The Guest Id of the user (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bookingsGet'] to see the possible values for this operation
+     * @param  object $body (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ratesPrebookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bookingsGetRequest($guest_id, string $contentType = self::contentTypes['bookingsGet'][0])
+    public function ratesPrebookPostRequest($body = null, string $contentType = self::contentTypes['ratesPrebookPost'][0])
     {
 
-        // verify the required parameter 'guest_id' is set
-        if ($guest_id === null || (is_array($guest_id) && count($guest_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $guest_id when calling bookingsGet'
-            );
-        }
 
 
-        $resourcePath = '/bookings';
+        $resourcePath = '/rates/prebook';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $guest_id,
-            'guestId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        ) ?? []);
 
 
 
@@ -1103,7 +721,14 @@ class BookingManagementApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -1147,7 +772,7 @@ class BookingManagementApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
