@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional]
 **country** | **string** |  | [optional]
 **city** | **string** |  | [optional]
-**location** | [**\OpenAPI\Client\Model\GetData200ResponseDataInnerLocation**](GetData200ResponseDataInnerLocation.md) |  | [optional]
+**latitude** | **float** |  | [optional]
+**longitude** | **float** |  | [optional]
 **address** | **string** |  | [optional]
 **zip** | **string** |  | [optional]
 **is_closed** | **bool** |  | [optional]
-**creditcard_required** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

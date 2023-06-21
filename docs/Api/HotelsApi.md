@@ -1,20 +1,23 @@
 # OpenAPI\Client\HotelsApi
 
-All URIs are relative to http://localhost:8080, except if the operation defines another base path.
+All URIs are relative to https://api.nlite.ml/v1, except if the operation defines another base path.
 
-| Method                                                  | HTTP request              | Description                                      |
-| ------------------------------------------------------- | ------------------------- | ------------------------------------------------ |
-| [**getData()**](HotelsApi.md#getData)                   | **GET** /data             | Search by Destination/Hotel                      |
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getData()**](HotelsApi.md#getData) | **GET** /data | Search by Destination/Hotel |
 | [**hotelsHotelIdGet()**](HotelsApi.md#hotelsHotelIdGet) | **GET** /hotels/{hotelId} | Get Room Availability &amp; Rates for a Hotel ID |
-| [**hotelsPost()**](HotelsApi.md#hotelsPost)             | **POST** /hotels          | Get Minimum Price for Available Hotels           |
+| [**hotelsPost()**](HotelsApi.md#hotelsPost) | **POST** /hotels | Get Minimum Price for Available Hotels |
+
 
 ## `getData()`
 
 ```php
-getData($country_code, $hotel_name, $city_name, $limit, $offset, $latitude, $longitude, $distance): \OpenAPI\Client\Model\GetData200Response
+getData($country_code, $hotel_name, $city_name, $limit, $offset, $latitude, $longitude, $distance, $iata_code): \OpenAPI\Client\Model\GetData200Response
 ```
 
 Search by Destination/Hotel
+
+
 
 ### Example
 
@@ -24,9 +27,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ApiKeyAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\HotelsApi(
@@ -43,9 +46,10 @@ $offset = 3.4; // float | results offset
 $latitude = 3.4; // float | latitude geo coordinates
 $longitude = 3.4; // float | longtude geo coordinates
 $distance = 3.4; // float | the distance starting from the selected geopgraphic point
+$iata_code = 'iata_code_example'; // string | airport iata code
 
 try {
-    $result = $apiInstance->getData($country_code, $hotel_name, $city_name, $limit, $offset, $latitude, $longitude, $distance);
+    $result = $apiInstance->getData($country_code, $hotel_name, $city_name, $limit, $offset, $latitude, $longitude, $distance, $iata_code);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HotelsApi->getData: ', $e->getMessage(), PHP_EOL;
@@ -54,16 +58,17 @@ try {
 
 ### Parameters
 
-| Name             | Type       | Description                                               | Notes      |
-| ---------------- | ---------- | --------------------------------------------------------- | ---------- |
-| **country_code** | **string** | country code Alpha-2 code (example US, RU, CN)            |            |
-| **hotel_name**   | **string** | hotel name                                                | [optional] |
-| **city_name**    | **string** | city name                                                 | [optional] |
-| **limit**        | **float**  | limit results (max value 1000)                            | [optional] |
-| **offset**       | **float**  | results offset                                            | [optional] |
-| **latitude**     | **float**  | latitude geo coordinates                                  | [optional] |
-| **longitude**    | **float**  | longtude geo coordinates                                  | [optional] |
-| **distance**     | **float**  | the distance starting from the selected geopgraphic point | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **country_code** | **string**| country code Alpha-2 code (example US, RU, CN) | |
+| **hotel_name** | **string**| hotel name | [optional] |
+| **city_name** | **string**| city name | [optional] |
+| **limit** | **float**| limit results (max value 1000) | [optional] |
+| **offset** | **float**| results offset | [optional] |
+| **latitude** | **float**| latitude geo coordinates | [optional] |
+| **longitude** | **float**| longtude geo coordinates | [optional] |
+| **distance** | **float**| the distance starting from the selected geopgraphic point | [optional] |
+| **iata_code** | **string**| airport iata code | [optional] |
 
 ### Return type
 
@@ -85,7 +90,7 @@ try {
 ## `hotelsHotelIdGet()`
 
 ```php
-hotelsHotelIdGet($hotel_id, $rid, $xid, $checkin, $checkout, $adults, $guest_nationality, $currency, $session_id): object
+hotelsHotelIdGet($hotel_id, $checkin, $checkout, $adults, $guest_nationality, $currency, $session_id, $traveler_id): \OpenAPI\Client\Model\HotelsHotelIdGet200Response
 ```
 
 Get Room Availability & Rates for a Hotel ID
@@ -100,9 +105,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ApiKeyAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\HotelsApi(
@@ -112,17 +117,16 @@ $apiInstance = new OpenAPI\Client\Api\HotelsApi(
     $config
 );
 $hotel_id = 436827; // int
-$rid = 888-8888-8888-888; // string
-$xid = 'xid_example'; // string
 $checkin = 2023-01-15; // string
 $checkout = 2023-01-16; // string
 $adults = 1; // int
 $guest_nationality = MA; // string
 $currency = USD; // string
 $session_id = GIYDEMZNGAYS2MJVPQZDAMRTFUYDCLJRGZ6DC7D4JVAXY7DZM5MDMQKKJJAXKZY; // string
+$traveler_id = 'traveler_id_example'; // string | traveler unique id
 
 try {
-    $result = $apiInstance->hotelsHotelIdGet($hotel_id, $rid, $xid, $checkin, $checkout, $adults, $guest_nationality, $currency, $session_id);
+    $result = $apiInstance->hotelsHotelIdGet($hotel_id, $checkin, $checkout, $adults, $guest_nationality, $currency, $session_id, $traveler_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HotelsApi->hotelsHotelIdGet: ', $e->getMessage(), PHP_EOL;
@@ -131,21 +135,20 @@ try {
 
 ### Parameters
 
-| Name                  | Type       | Description | Notes      |
-| --------------------- | ---------- | ----------- | ---------- |
-| **hotel_id**          | **int**    |             |            |
-| **rid**               | **string** |             | [optional] |
-| **xid**               | **string** |             | [optional] |
-| **checkin**           | **string** |             | [optional] |
-| **checkout**          | **string** |             | [optional] |
-| **adults**            | **int**    |             | [optional] |
-| **guest_nationality** | **string** |             | [optional] |
-| **currency**          | **string** |             | [optional] |
-| **session_id**        | **string** |             | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **hotel_id** | **int**|  | |
+| **checkin** | **string**|  | [optional] |
+| **checkout** | **string**|  | [optional] |
+| **adults** | **int**|  | [optional] |
+| **guest_nationality** | **string**|  | [optional] |
+| **currency** | **string**|  | [optional] |
+| **session_id** | **string**|  | [optional] |
+| **traveler_id** | **string**| traveler unique id | [optional] |
 
 ### Return type
 
-**object**
+[**\OpenAPI\Client\Model\HotelsHotelIdGet200Response**](../Model/HotelsHotelIdGet200Response.md)
 
 ### Authorization
 
@@ -163,7 +166,7 @@ try {
 ## `hotelsPost()`
 
 ```php
-hotelsPost($rid, $hotels_post_request): object
+hotelsPost($rid, $hotels_post_request): \OpenAPI\Client\Model\HotelsPost200Response
 ```
 
 Get Minimum Price for Available Hotels
@@ -178,9 +181,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ApiKeyAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\HotelsApi(
@@ -202,14 +205,14 @@ try {
 
 ### Parameters
 
-| Name                    | Type                                                                         | Description | Notes      |
-| ----------------------- | ---------------------------------------------------------------------------- | ----------- | ---------- |
-| **rid**                 | **string**                                                                   |             | [optional] |
-| **hotels_post_request** | [**\OpenAPI\Client\Model\HotelsPostRequest**](../Model/HotelsPostRequest.md) |             | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rid** | **string**|  | [optional] |
+| **hotels_post_request** | [**\OpenAPI\Client\Model\HotelsPostRequest**](../Model/HotelsPostRequest.md)|  | [optional] |
 
 ### Return type
 
-**object**
+[**\OpenAPI\Client\Model\HotelsPost200Response**](../Model/HotelsPost200Response.md)
 
 ### Authorization
 
