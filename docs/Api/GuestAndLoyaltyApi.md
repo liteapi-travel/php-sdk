@@ -36,7 +36,7 @@ $apiInstance = new OpenAPI\Client\Api\GuestAndLoyaltyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$email = johndoe@nlite.ml; // string | Email ID of the guest
+$email = "johndoe@nlite.ml"; // string | Email ID of the guest
 
 try {
     $result = $apiInstance->guestsGet($email);

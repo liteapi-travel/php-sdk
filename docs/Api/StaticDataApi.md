@@ -41,7 +41,7 @@ $apiInstance = new OpenAPI\Client\Api\StaticDataApi(
     new GuzzleHttp\Client(),
     $config
 );
-$country_code = SG; // string | Country code in iso-2 format (example: SG)
+$country_code = "SG"; // string | Country code in iso-2 format (example: SG)
 
 try {
     $result = $apiInstance->dataCitiesGet($country_code);
@@ -283,8 +283,8 @@ $apiInstance = new OpenAPI\Client\Api\StaticDataApi(
     new GuzzleHttp\Client(),
     $config
 );
-$country_code = SG; // string | country code ISO-2 code - example (SG)
-$city_name = Singapore; // string | name of the city
+$country_code = "SG"; // string | country code ISO-2 code - example (SG)
+$city_name = "Singapore"; // string | name of the city
 $offset = 0; // int | specifies the number of rows to skip before starting to return rows
 $limit = 1000; // int | limit number of results (max 1000)
 $longitude = -115.16988; // float | longitude geo coordinates

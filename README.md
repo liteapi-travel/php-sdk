@@ -1,4 +1,4 @@
-# Nuitee/LiteAPI
+# OpenAPIClient-php
 
 The **Lite API** can be used to to do the following
 
@@ -41,7 +41,7 @@ Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/Nuitee/LiteAPI/vendor/autoload.php');
+require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
 ```
 
 ## Getting Started

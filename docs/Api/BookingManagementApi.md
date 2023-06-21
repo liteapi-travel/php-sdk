@@ -38,7 +38,7 @@ $apiInstance = new OpenAPI\Client\Api\BookingManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$booking_id =  hSq2gVDrf; // string | The Booking Id that needs to be retrieved
+$booking_id =  "hSq2gVDrf"; // string | The Booking Id that needs to be retrieved
 
 try {
     $result = $apiInstance->bookingsBookingIdGet($booking_id);
@@ -100,7 +100,7 @@ $apiInstance = new OpenAPI\Client\Api\BookingManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$booking_id = hSq2gVDrf; // string | (Required) The unique identifier of the booking you would like to update.
+$booking_id = "hSq2gVDrf"; // string | (Required) The unique identifier of the booking you would like to update.
 
 try {
     $result = $apiInstance->bookingsBookingIdPut($booking_id);
@@ -162,7 +162,7 @@ $apiInstance = new OpenAPI\Client\Api\BookingManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$guest_id = FrT56hfty; // string | The Guest Id of the user
+$guest_id = "FrT56hfty"; // string | The Guest Id of the user
 
 try {
     $result = $apiInstance->bookingsGet($guest_id);

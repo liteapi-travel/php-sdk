@@ -37,14 +37,14 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hotel_ids = lp3803c,lp1f982,lp19b70,lp19e75; // string | List of hotelIds
-$checkin = 2023-11-15; // string | Check in data in YYYY-MM-DD format
-$checkout = 2023-11-16; // string | Check out data in YYYY-MM-DD format
-$currency = USD; // string | Currency code - example (USD)
-$guest_nationality = US; // string | Guest nationality ISO-2 code - example (SG)
+$hotel_ids = "lp3803c,lp1f982,lp19b70,lp19e75"; // string | List of hotelIds
+$checkin = "2023-11-15"; // string | Check in data in YYYY-MM-DD format
+$checkout = "2023-11-16"; // string | Check out data in YYYY-MM-DD format
+$currency = "USD"; // string | Currency code - example (USD)
+$guest_nationality = "US"; // string | Guest nationality ISO-2 code - example (SG)
 $adults = 1; // int | Number of adult guests staying
-$children = 12,9; // string | Number of children staying if any
-$guest_id = testtraveler1; // string | Unique traveler ID if available
+$children = "12,9"; // string | Number of children staying if any
+$guest_id = "testtraveler1"; // string | Unique traveler ID if available
 
 try {
     $result = $apiInstance->hotelsGet($hotel_ids, $checkin, $checkout, $currency, $guest_nationality, $adults, $children, $guest_id);
@@ -113,14 +113,14 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hotel_ids = lp3803c,lp1f982,lp19b70,lp19e75; // string | List of hotelIds
-$checkin = 2023-11-15; // string | Check in data in YYYY-MM-DD format
-$checkout = 2023-11-16; // string | Check out data in YYYY-MM-DD format
-$guest_nationality = US; // string | Guest nationality ISO-2 code - example (SG)
-$currency = USD; // string | Currency code - example (USD)
+$hotel_ids = "lp3803c,lp1f982,lp19b70,lp19e75"; // string | List of hotelIds
+$checkin = "2023-11-15"; // string | Check in data in YYYY-MM-DD format
+$checkout = "2023-11-16"; // string | Check out data in YYYY-MM-DD format
+$guest_nationality = "US"; // string | Guest nationality ISO-2 code - example (SG)
+$currency = "USD"; // string | Currency code - example (USD)
 $adults = 1; // int | Number of adult guests staying
-$children = 12,9; // string | Number of children staying if any
-$guest_id = traveler1; // string | Unique traveler ID if available
+$children = "12,9"; // string | Number of children staying if any
+$guest_id = "traveler1"; // string | Unique traveler ID if available
 
 try {
     $result = $apiInstance->hotelsRatesGet($hotel_ids, $checkin, $checkout, $guest_nationality, $currency, $adults, $children, $guest_id);
