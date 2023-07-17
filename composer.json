@@ -1,21 +1,21 @@
 {
     "name": "liteapi-travel/php-sdk",
-    "description": "The **Lite API** can be used to to do the following  Get room rates & availability for a set of hotels Select a specific hotel with room availability and make a booking Manage the bookings - retrieve and cancel existing bookings Get static content for hotels, search hotels by destination",
+    "version": "2.0.0",
+    "description": "The **liteAPI** can be used to to do the following  Get room rates & availability for a set of hotels Select a specific hotel with room availability and make a booking Manage the bookings - retrieve and cancel existing bookings Get static content for hotels, search hotels by destination",
     "keywords": [
-        "openapitools",
-        "openapi-generator",
-        "openapi",
-        "php",
+        "travel",
+        "hotels",
+        "api",
         "sdk",
-        "rest",
-        "api"
+        "booking",
+        "vacation"
     ],
-    "homepage": "https://openapi-generator.tech",
+    "homepage": "https://www.liteapi.travel",
     "license": "unlicense",
     "authors": [
         {
-            "name": "OpenAPI-Generator contributors",
-            "homepage": "https://openapi-generator.tech"
+            "name": "liteAPI",
+            "homepage": "https://www.liteapi.travel"
         }
     ],
     "require": {
@@ -31,9 +31,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
+        "psr-4": { "LiteAPI\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
+        "psr-4": { "LiteAPI\\Test\\" : "test/" }
     }
 }
