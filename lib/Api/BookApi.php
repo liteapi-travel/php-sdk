@@ -460,7 +460,7 @@ class BookApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getBookHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -788,7 +788,7 @@ class BookApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getBookHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',

@@ -89,6 +89,8 @@ class Configuration
      * @var string
      */
     protected $host = 'https://api.liteapi.travel/v2.0';
+    protected $bookHost = 'https://book.liteapi.travel/v2.0';
+
 
     /**
      * User agent of the HTTP request, set to "liteAPI/{version}/PHP" by default
@@ -294,6 +296,10 @@ class Configuration
         return $this->host;
     }
 
+    public function getBookHost()
+    {
+        return $this->bookHost;
+    }
     /**
      * Sets the user agent of the api client
      *
@@ -469,6 +475,7 @@ class Configuration
         return [
             [
                 "url" => "https://api.liteapi.travel/v2.0",
+                "bookUrl" => "https://book.liteapi.travel/v2.0",
                 "description" => "No description provided",
             ]
         ];

@@ -448,7 +448,7 @@ class BookingManagementApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getBookHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -805,7 +805,7 @@ class BookingManagementApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getBookHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -1140,7 +1140,7 @@ class BookingManagementApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getBookHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
